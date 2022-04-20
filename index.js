@@ -28,7 +28,8 @@ const addManager = () => {
             name: 'officeNumber',
             message: `What is the Manager's Office Phone Number?`
         }
-    ]).then(res, (res) => {
+    ])
+    .then(res, (res) => {
         const {name, id, email, officeNumber} = res;
         const newManager = new Manager(name, id, email, officeNumber);
         employees.push(newManager);
@@ -56,7 +57,8 @@ const addEngineer = () => {
             name: 'gitHub',
             message: `What is the Engineer's GitHub?`
         }
-    ]).then(res, (res) => {
+    ])
+    .then(res, (res) => {
         const {name, id, email, gitHub} = res;
         const newEngineer = new Engineer(name, id, email, gitHub);
         employees.push(newEngineer);
