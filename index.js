@@ -1,7 +1,7 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const Template = require('./src/Template');
+const template = require('./src/template.js');
 const inquirer = require('inquirer')
 const fs = require('fs');
 const employees = [];
@@ -15,7 +15,7 @@ const addManager = () => {
         },
         {
             type: 'input',
-            name: 'Id',
+            name: 'id',
             message: `What is the Manager's Employee ID?`
         },
         {
@@ -29,10 +29,11 @@ const addManager = () => {
             message: `What is the Manager's Office Phone Number?`
         }
     ])
-    .then(res, (res) => {
+    .then((res) => {
         const {name, id, email, officeNumber} = res;
         const newManager = new Manager(name, id, email, officeNumber);
         employees.push(newManager);
+        addEmployee();
     })
 }
 const addEngineer = () => {
@@ -58,10 +59,11 @@ const addEngineer = () => {
             message: `What is the Engineer's GitHub?`
         }
     ])
-    .then(res, (res) => {
+    .then((res) => {
         const {name, id, email, gitHub} = res;
         const newEngineer = new Engineer(name, id, email, gitHub);
         employees.push(newEngineer);
+        addEmployee();
     })
 }
 const addIntern = () => {
@@ -86,10 +88,11 @@ const addIntern = () => {
             name: 'school',
             message: `What is the Intern's School?`
         }
-    ]).then(res, (res) => {
+    ]).then((res) => {
         const {name, id, email, school} = res;
         const newIntern = new Intern(name, id, email, school);
         employees.push(newIntern);
+        addEmployee();
     })
 }
 const addEmployee = () => {
@@ -99,7 +102,7 @@ const addEmployee = () => {
             name: 'addEmployee',
             message: `Would like to add another employee?`
         }
-    ]).then(res, (res) => {
+    ]).then((res) => {
         if (res.addEmployee) {
              inquirer.prompt([
                 {
@@ -107,27 +110,21 @@ const addEmployee = () => {
                     name: 'EmployeeType',
                     choices: ['Engineer', 'Intern']
                 }
-            ]).then(res, (res) => {
+            ]).then((res) => {
                 if(res.EmployeeType === 'Engineer'){
                     addEngineer();
-                    addEmployee();
                 } else {
                     addIntern();
-                    addEmployee();
                 }
             })
         } else {
+            fs.writeFileSync('./dist/index.html', template(employees), 'utf-8');
             process.exit;
         }
     })
 }
-const init = () => {
-    addManager()
-        .then(
-            addEmployee()
-                .then(() => {
-                    fs.appendFile('./dist/index.html', Template.generateTemplate(employees))
-                })
-        )
+const init = async () => {
+    await addManager();
+    
 }
 init();

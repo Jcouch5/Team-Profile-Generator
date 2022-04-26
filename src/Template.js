@@ -51,7 +51,7 @@ const generateEmployees = (data) => {
     });
     return cards.join('');
 }
-const generateTemplate = (data) => {
+module.exports  = (data) => {
 const template =
 `<!DOCTYPE html>
 <html lang="en">
@@ -75,6 +75,4 @@ const template =
 </html>`;
 return template;
 
-
 }
-module.exports = generateTemplate;
