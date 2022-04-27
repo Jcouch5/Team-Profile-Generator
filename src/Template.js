@@ -3,7 +3,7 @@ const generateEmployees = (data) => {
     data.forEach(employee => {
        if (employee.getRole() === 'Manager'){
         const managerCard = `
-        <div class="card text-center">
+        <div class="card text-center ccol-3 m-3">
             <div class="card-header">
             <h1>${employee.getName()} <h1>
                  ${employee.getRole()}
@@ -18,7 +18,7 @@ const generateEmployees = (data) => {
         cards.push(managerCard)
        } else if (employee.getRole() === 'Engineer') {
         const EngineerCard = `
-        <div class="card text-center">
+        <div class="card text-center col-3 m-3">
             <div class="card-header">
                  <h1>${employee.getName()} <h1>
                  ${employee.getRole()}
@@ -34,7 +34,7 @@ const generateEmployees = (data) => {
         cards.push(EngineerCard)
        } else {
         const InternCard = `
-        <div class="card text-center">
+        <div class="card text-center col-3 m-3">
             <div class="card-header">
             <h1>${employee.getName()} <h1>
                  ${employee.getRole()}
@@ -69,7 +69,9 @@ const template =
         </nav>
     </header>
     <div class='container'>
-        ${generateEmployees(data)}
+        <div class="row justify-content-center">
+            ${generateEmployees(data)}
+        </div>
     </div>
 </body>
 </html>`;
