@@ -15,28 +15,28 @@ describe("Employee", () => {
         it('should return the name of the employee', () => {
             const jake = new Employee('jake', 1, 'jake@gmail.com')
 
-            expect(jake.getName).toEqual('jake');
+            expect(jake.getName()).toEqual('jake');
         });
     });
     describe('getId', () => {
         it('should return the Id of the employee', () => {
             const jake = new Employee('jake', 1, 'jake@gmail.com')
 
-            expect(jake.getId).toEqual(1);
+            expect(jake.getId()).toEqual(1);
         });
     });
     describe('getEmail', () => {
         it('should return the Email of the employee', () => {
             const jake = new Employee('jake', 1, 'jake@gmail.com')
 
-            expect(jake.getEmail).toEqual('jake@gmail.com');
+            expect(jake.getEmail()).toEqual('jake@gmail.com');
         });
     });
     describe('getRole', () => {
         it('should return the role of the employee', () => {
             const jake = new Employee('jake', 1, 'jake@gmail.com')
 
-            expect(jake.getRole).toEqual('Employee');
+            expect(jake.getRole()).toEqual('Employee');
         });
     });
     
