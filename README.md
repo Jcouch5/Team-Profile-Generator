@@ -3,5 +3,6 @@ In this assignment we were required to build and test 4 classes. Employee was th
 
 
 ## Link to Repository
-
+[Repository Link](https://github.com/Jcouch5/Employee-Tracker)
 ## Link to Walk Through Video
+[Video Link](https://drive.google.com/file/d/1SiIoOvtmfJD4czOFmN_BrcI0oLY-jxyh/view?usp=sharing)
